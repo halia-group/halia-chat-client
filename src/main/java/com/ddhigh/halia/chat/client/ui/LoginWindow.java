@@ -83,7 +83,7 @@ public class LoginWindow {
             frame.dispose();
             shared = null;
 
-            PublicChatWindow.shared().show();
+            MainWindow.shared().show();
         });
     }
 

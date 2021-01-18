@@ -50,6 +50,24 @@ public class ChatHandler extends ChannelInboundHandlerAdapter {
             case UnAuthorization:
                 listener.onUnAuthorize(ctx, (UnAuthorization) packet);
                 break;
+            case FriendListResp:
+                listener.onFriendListResp(ctx, (FriendListResp) packet);
+                break;
+            case FriendApplyResp:
+                listener.onFriendApplyResp(ctx, (FriendApplyResp) packet);
+                break;
+            case FriendApplyResultResp:
+                listener.onFriendApplyResultResp(ctx, (FriendApplyResultResp) packet);
+                break;
+            case FriendApplyMessage:
+                listener.onFriendApplyMessage(ctx, (FriendApplyMessage) packet);
+                break;
+            case FriendApplyResultMessage:
+                listener.onFriendApplyResultMessage(ctx,(FriendApplyResultMessage) packet);
+                break;
+            case SearchUserResp:
+                listener.onSearchUserResp(ctx,(SearchUserResp)packet);
+                break;
         }
     }
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PacketFactory {
-    private static Map<Opcode, Class<? extends AbstractPacket>> map = new HashMap<>();
+    private static final Map<Opcode, Class<? extends AbstractPacket>> map = new HashMap<>();
 
     static {
         map.put(Opcode.PING, Ping.class);
@@ -18,7 +18,15 @@ public class PacketFactory {
         map.put(Opcode.PublicChatReq, PublicChatReq.class);
         map.put(Opcode.PublicChatResp, PublicChatResp.class);
         map.put(Opcode.PublicChatMessage, PublicChatMessage.class);
-        map.put(Opcode.UnAuthorization, UnAuthorization.class);
+        map.put(Opcode.FriendListReq, FriendListReq.class);
+        map.put(Opcode.FriendListResp, FriendListResp.class);
+        map.put(Opcode.FriendApplyReq, FriendApplyReq.class);
+        map.put(Opcode.FriendApplyResp, FriendApplyResp.class);
+        map.put(Opcode.FriendApplyMessage, FriendApplyMessage.class);
+        map.put(Opcode.FriendApplyResultReq, FriendApplyResultReq.class);
+        map.put(Opcode.FriendApplyResultResp, FriendApplyResultResp.class);
+        map.put(Opcode.FriendApplyResultMessage, FriendApplyResultMessage.class);
+        map.put(Opcode.SearchUserResp, SearchUserResp.class);
     }
 
     public static Class<? extends AbstractPacket> getClass(Opcode opcode) {

@@ -10,7 +10,17 @@ public enum Opcode {
     PublicChatReq(7),
     PublicChatResp(8),
     PublicChatMessage(9),
-    UnAuthorization(10);
+    UnAuthorization(10),
+    FriendListReq(11),
+    FriendListResp(12),
+    FriendApplyReq(13),
+    FriendApplyResp(14),
+    FriendApplyMessage(15),
+    FriendApplyResultReq(16),
+    FriendApplyResultResp(17),
+    FriendApplyResultMessage(18),
+    SearchUserReq(19),
+    SearchUserResp(20);
 
     private final int value;
 

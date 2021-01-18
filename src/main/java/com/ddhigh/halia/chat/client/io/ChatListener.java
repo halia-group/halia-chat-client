@@ -21,4 +21,16 @@ public interface ChatListener {
     void onPublicChatMessage(ChannelHandlerContext ctx, PublicChatMessage packet);
 
     void onUnAuthorize(ChannelHandlerContext ctx, UnAuthorization packet);
+
+    void onFriendListResp(ChannelHandlerContext ctx, FriendListResp packet);
+
+    void onFriendApplyResp(ChannelHandlerContext ctx, FriendApplyResp packet);
+
+    void onFriendApplyResultResp(ChannelHandlerContext ctx, FriendApplyResultResp packet);
+
+    void onFriendApplyMessage(ChannelHandlerContext ctx, FriendApplyMessage packet);
+
+    void onFriendApplyResultMessage(ChannelHandlerContext ctx, FriendApplyResultMessage packet);
+
+    void onSearchUserResp(ChannelHandlerContext ctx, SearchUserResp packet);
 }
