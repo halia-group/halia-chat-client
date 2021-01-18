@@ -8,8 +8,8 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 public class ChatHandler extends ChannelInboundHandlerAdapter {
     private final ChatListener listener;
 
-    public ChatHandler(ChatListener listener) {
-        this.listener = listener;
+    public ChatHandler() {
+        this.listener = DefaultChatListener.shared();
     }
 
     @Override

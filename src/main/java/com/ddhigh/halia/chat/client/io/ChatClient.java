@@ -8,12 +8,23 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class ChatClient {
-    private String host;
-    private int port;
+    private static ChatClient shared;
 
-    public ChatClient(String host, int port) {
-        this.host = host;
-        this.port = port;
+    public static ChatClient shared() {
+        if (shared == null) {
+            synchronized (ChatClient.class) {
+                if (shared == null) {
+                    shared = new ChatClient();
+                }
+            }
+        }
+        return shared;
+    }
+
+    private String host = "localhost";
+    private int port = 8080;
+
+    private ChatClient() {
     }
 
     public void bootstrap() throws InterruptedException {
@@ -25,8 +36,9 @@ public class ChatClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            DefaultChatListener.shared().setChannel(ch);
                             ch.pipeline().addLast("codec", new MessageCodec());
-                            ch.pipeline().addLast("handler", new ChatHandler(new DefaultChatListener()));
+                            ch.pipeline().addLast("handler", new ChatHandler());
                         }
                     });
             var f = b.connect(host, port).sync();
