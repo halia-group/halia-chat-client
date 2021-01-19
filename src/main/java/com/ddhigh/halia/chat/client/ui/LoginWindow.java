@@ -83,6 +83,8 @@ public class LoginWindow {
             frame.dispose();
             shared = null;
 
+            MainWindow.shared().setCurrentUserId(resp.getUserId());
+            MainWindow.shared().setCurrentNickname(resp.getNickname());
             MainWindow.shared().show();
         });
     }

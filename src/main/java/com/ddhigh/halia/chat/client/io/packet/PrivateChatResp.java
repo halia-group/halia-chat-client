@@ -4,54 +4,45 @@ import com.ddhigh.halia.chat.client.io.protocol.Opcode;
 import com.ddhigh.halia.chat.client.io.protocol.Packet;
 import io.netty.buffer.ByteBuf;
 
-@Packet(opcode = Opcode.LoginResp)
-public class LoginResp extends AbstractPacket {
+@Packet(opcode = Opcode.PrivateChatResp)
+public class PrivateChatResp extends AbstractPacket {
     private int code;
     private String message;
-    private int userId;
-    private String nickname;
+    private int receiverId;
 
-    public LoginResp(int code, String message, int userId, String nickname) {
+    public PrivateChatResp(int code, String message, int receiverId) {
         this.code = code;
         this.message = message;
-        this.userId = userId;
-        this.nickname = nickname;
+        this.receiverId = receiverId;
     }
 
-    public LoginResp() {
+    public PrivateChatResp() {
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public String getNickname() {
-        return nickname;
+    public int getReceiverId() {
+        return receiverId;
     }
 
     @Override
     public void read(ByteBuf buf) {
         code = buf.readByte();
         message = readString(buf);
-        userId = buf.readInt();
-        nickname = readString(buf);
+        receiverId = buf.readInt();
     }
 
     @Override
     public void write(ByteBuf buf) {
         buf.writeByte(code);
-        writeString(buf, message);
-        buf.writeInt(userId);
-        writeString(buf, nickname);
+        writeString(buf,message);
+        buf.writeInt(receiverId);
     }
 
     @Override
     public String toString() {
-        return "LoginResp{" +
+        return "PrivateChatResp{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
-                ", userId=" + userId +
-                ", nickname='" + nickname + '\'' +
+                ", receiverId=" + receiverId +
                 '}';
     }
 

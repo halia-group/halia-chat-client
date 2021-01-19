@@ -33,4 +33,8 @@ public interface ChatListener {
     void onFriendApplyResultMessage(ChannelHandlerContext ctx, FriendApplyResultMessage packet);
 
     void onSearchUserResp(ChannelHandlerContext ctx, SearchUserResp packet);
+
+    void onPrivateChatResp(ChannelHandlerContext ctx, PrivateChatResp packet);
+
+    void onPrivateChatMessage(ChannelHandlerContext ctx, PrivateChatMessage packet);
 }

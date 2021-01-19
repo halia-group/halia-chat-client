@@ -27,6 +27,8 @@ public class PacketFactory {
         map.put(Opcode.FriendApplyResultResp, FriendApplyResultResp.class);
         map.put(Opcode.FriendApplyResultMessage, FriendApplyResultMessage.class);
         map.put(Opcode.SearchUserResp, SearchUserResp.class);
+        map.put(Opcode.PrivateChatResp, PrivateChatResp.class);
+        map.put(Opcode.PrivateChatMessage, PrivateChatMessage.class);
     }
 
     public static Class<? extends AbstractPacket> getClass(Opcode opcode) {

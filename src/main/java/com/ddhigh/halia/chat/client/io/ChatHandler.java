@@ -63,10 +63,16 @@ public class ChatHandler extends ChannelInboundHandlerAdapter {
                 listener.onFriendApplyMessage(ctx, (FriendApplyMessage) packet);
                 break;
             case FriendApplyResultMessage:
-                listener.onFriendApplyResultMessage(ctx,(FriendApplyResultMessage) packet);
+                listener.onFriendApplyResultMessage(ctx, (FriendApplyResultMessage) packet);
                 break;
             case SearchUserResp:
-                listener.onSearchUserResp(ctx,(SearchUserResp)packet);
+                listener.onSearchUserResp(ctx, (SearchUserResp) packet);
+                break;
+            case PrivateChatResp:
+                listener.onPrivateChatResp(ctx, (PrivateChatResp) packet);
+                break;
+            case PrivateChatMessage:
+                listener.onPrivateChatMessage(ctx, (PrivateChatMessage) packet);
                 break;
         }
     }

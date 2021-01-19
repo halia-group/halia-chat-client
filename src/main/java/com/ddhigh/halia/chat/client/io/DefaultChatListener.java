@@ -136,6 +136,18 @@ public class DefaultChatListener implements ChatListener {
         }
     }
 
+    @Override
+    public void onPrivateChatResp(ChannelHandlerContext ctx, PrivateChatResp packet) {
+        logger.info("{}", packet);
+        MainWindow.shared().onPrivateChatResp(packet);
+    }
+
+    @Override
+    public void onPrivateChatMessage(ChannelHandlerContext ctx, PrivateChatMessage packet) {
+        logger.info("{}", packet);
+        MainWindow.shared().onPrivateChatMessage(packet);
+    }
+
     public void doLogin(String username, String password) {
         var packet = new LoginReq(username, password);
         ch.writeAndFlush(packet);
@@ -173,6 +185,11 @@ public class DefaultChatListener implements ChatListener {
 
     public void doFriendApply(int userId, String reason) {
         var packet = new FriendApplyReq(userId, reason);
+        ch.writeAndFlush(packet);
+    }
+
+    public void doPrivateChat(int receiverId, MsgType msgType, String message) {
+        var packet = new PrivateChatReq(receiverId, msgType, message);
         ch.writeAndFlush(packet);
     }
 }

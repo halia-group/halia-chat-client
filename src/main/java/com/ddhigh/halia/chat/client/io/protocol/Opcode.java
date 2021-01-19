@@ -20,7 +20,10 @@ public enum Opcode {
     FriendApplyResultResp(17),
     FriendApplyResultMessage(18),
     SearchUserReq(19),
-    SearchUserResp(20);
+    SearchUserResp(20),
+    PrivateChatReq(21),
+    PrivateChatResp(22),
+    PrivateChatMessage(23);
 
     private final int value;
 
